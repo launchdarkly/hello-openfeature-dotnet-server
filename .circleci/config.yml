@@ -31,7 +31,7 @@ workflows:
 jobs:
   build-run-linux:
     docker:
-      - image: mcr.microsoft.com/dotnet/core/sdk:2.1-focal
+      - image: mcr.microsoft.com/dotnet/sdk:6.0-focal
     steps:
       - checkout
       - run:
@@ -63,11 +63,11 @@ jobs:
             $content | Set-Content -Path .\HelloOpenFeatureDotnet\Hello.cs
       - run:
           name: build demo
-          command: dotnet build HelloDotNet.sln
+          command: dotnet build HelloOpenFeatureDotnet.sln
       - run:
           name: run demo
           command: |
-            dotnet run --project HelloDotNet | tee-object -variable output
+            dotnet run --project HelloOpenFeatureDotnet | tee-object -variable output
             if ( "$output" -notlike "*is True for this user*" )
             {
               write-output "Flag did not evaluate to expected true value"
