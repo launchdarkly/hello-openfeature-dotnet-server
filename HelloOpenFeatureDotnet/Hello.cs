@@ -45,6 +45,9 @@ namespace HelloOpenFeatureDotnetServer
 
             var client = OpenFeature.Api.Instance.GetClient();
 
+            // Set up the user properties. This user should appear on your LaunchDarkly users dashboard
+            // soon after you run the demo.
+            // Remember when using OpenFeature to use `targetingKey` instead of `key`.
             var context = EvaluationContext.Builder()
                 .Set("targetingKey", "example-user-key")
                 .Set("name", "Sandy")
