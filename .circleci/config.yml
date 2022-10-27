@@ -44,7 +44,7 @@ jobs:
       - run:
           name: run demo
           command: |
-            dotnet run --project HelloOpenFeatureDotnet | tee output.txt --framework net6.0
+            dotnet run --project HelloOpenFeatureDotnet --framework net6.0 | tee output.txt
             grep "is True for this user" output.txt || (echo "Flag did not evaluate to expected true value" && exit 1)
 
   build-run-windows:
@@ -66,7 +66,7 @@ jobs:
       - run:
           name: run demo
           command: |
-            dotnet run --project HelloOpenFeatureDotnet | tee-object -variable output
+            dotnet run --project HelloOpenFeatureDotnet --framework net6.0 | tee-object -variable output
             if ( "$output" -notlike "*is True for this user*" )
             {
               write-output "Flag did not evaluate to expected true value"
