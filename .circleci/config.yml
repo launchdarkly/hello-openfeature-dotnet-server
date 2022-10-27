@@ -44,7 +44,7 @@ jobs:
       - run:
           name: run demo
           command: |
-            dotnet run --project HelloOpenFeatureDotnet | tee output.txt
+            dotnet run --project HelloOpenFeatureDotnet | tee output.txt --framework net6.0
             grep "is True for this user" output.txt || (echo "Flag did not evaluate to expected true value" && exit 1)
 
   build-run-windows:
