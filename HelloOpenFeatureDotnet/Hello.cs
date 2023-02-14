@@ -49,6 +49,7 @@ namespace HelloOpenFeatureDotnetServer
             // soon after you run the demo.
             // Remember when using OpenFeature to use `targetingKey` instead of `key`.
             var context = EvaluationContext.Builder()
+                .Set("kind", "user")
                 .Set("targetingKey", "example-user-key")
                 .Set("name", "Sandy")
                 .Build();
