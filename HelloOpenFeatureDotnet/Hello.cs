@@ -23,25 +23,14 @@ namespace HelloOpenFeatureDotnetServer
             }
 
             var config = Configuration.Builder(SdkKey)
-                .StartWaitTime(TimeSpan.FromSeconds(10))
+                // Allow for asynchronous initialization, the SetProviderAsync call will return when initialization is
+                // complete.
+                .StartWaitTime(TimeSpan.Zero)
                 .Build();
 
+            var provider = new Provider(config);
 
-            var ldClient = new LdClient(config);
-
-            if (ldClient.Initialized)
-            {
-                Console.WriteLine("SDK successfully initialized!");
-            }
-            else
-            {
-                Console.WriteLine("SDK failed to initialize");
-                Environment.Exit(1);
-            }
-
-            var provider = new Provider(ldClient);
-
-            OpenFeature.Api.Instance.SetProvider(provider);
+            await OpenFeature.Api.Instance.SetProviderAsync(provider);
 
             var client = OpenFeature.Api.Instance.GetClient();
 
@@ -63,7 +52,7 @@ namespace HelloOpenFeatureDotnetServer
             // the user properties and flag usage statistics will not appear on your dashboard. In a
             // normal long-running application, the SDK would continue running and events would be
             // delivered automatically in the background.
-            ldClient.Dispose();
+            await OpenFeature.Api.Instance.Shutdown();
         }
     }
 }
