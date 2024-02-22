@@ -8,8 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-<!--    <PackageReference Include="LaunchDarkly.OpenFeature.ServerProvider" Version="0.5.0" />-->
-    <ProjectReference Include="../../open-feature-dotnet/src/LaunchDarkly.OpenFeature.ServerProvider/LaunchDarkly.OpenFeature.ServerProvider.csproj"  />
+    <PackageReference Include="LaunchDarkly.OpenFeature.ServerProvider" Version="0.6.0" />
     <PackageReference Include="LaunchDarkly.ServerSdk" Version="8.*" />
     <PackageReference Include="OpenFeature" Version="1.*" />
   </ItemGroup>
