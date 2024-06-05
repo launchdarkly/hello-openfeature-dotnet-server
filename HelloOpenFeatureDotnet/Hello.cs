@@ -8,21 +8,18 @@ namespace HelloOpenFeatureDotnetServer
 {
     internal static class Hello
     {
-        // Set SdkKey to your LaunchDarkly SDK key.
-        private const string SdkKey = "";
-
-        // Set FeatureFlagKey to the feature flag key you want to evaluate.
-        private const string FeatureFlagKey = "my-boolean-flag";
-
         public static async Task Main(string[] args)
         {
-            if (string.IsNullOrEmpty(SdkKey))
+            var sdkKey = Environment.GetEnvironmentVariable("LAUNCHDARKLY_SDK_KEY");
+            var featureFlagKey = Environment.GetEnvironmentVariable("FEATURE_FLAG_KEY") ?? "sample-feature";
+
+            if (string.IsNullOrEmpty(sdkKey))
             {
                 Console.WriteLine("Please edit Hello.cs to set SdkKey to your LaunchDarkly SDK key first");
                 Environment.Exit(1);
             }
 
-            var config = Configuration.Builder(SdkKey)
+            var config = Configuration.Builder(sdkKey)
                 // Allow for asynchronous initialization, the SetProviderAsync call will return when initialization is
                 // complete.
                 .StartWaitTime(TimeSpan.Zero)
@@ -43,9 +40,9 @@ namespace HelloOpenFeatureDotnetServer
                 .Set("name", "Sandy")
                 .Build();
 
-            var flagValue = await client.GetBooleanValue(FeatureFlagKey, false, context);
+            var flagValue = await client.GetBooleanValue(featureFlagKey, false, context);
 
-            Console.WriteLine($"Feature flag '{FeatureFlagKey}' is {flagValue} for this user");
+            Console.WriteLine($"The {featureFlagKey} feature flag evaluates to {(flagValue ? "true" : "false")}");
 
             // Here we ensure that the SDK shuts down cleanly and has a chance to deliver analytics
             // events to LaunchDarkly before the program exits. If analytics events are not delivered,
