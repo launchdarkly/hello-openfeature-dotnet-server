@@ -11,7 +11,7 @@ namespace HelloOpenFeatureDotnetServer
         public static async Task Main(string[] args)
         {
             var sdkKey = Environment.GetEnvironmentVariable("LAUNCHDARKLY_SDK_KEY");
-            var featureFlagKey = Environment.GetEnvironmentVariable("FEATURE_FLAG_KEY") ?? "sample-feature";
+            var featureFlagKey = Environment.GetEnvironmentVariable("LAUNCHDARKLY_FLAG_KEY") ?? "sample-feature";
 
             if (string.IsNullOrEmpty(sdkKey))
             {
