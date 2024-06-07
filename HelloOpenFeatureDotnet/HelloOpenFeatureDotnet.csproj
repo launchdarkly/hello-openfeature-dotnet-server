@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="LaunchDarkly.OpenFeature.ServerProvider" Version="0.8.0" />
+    <PackageReference Include="LaunchDarkly.OpenFeature.ServerProvider" Version="1.*" />
     <PackageReference Include="LaunchDarkly.ServerSdk" Version="8.5.1" />
     <PackageReference Include="OpenFeature" Version="1.*" />
   </ItemGroup>
