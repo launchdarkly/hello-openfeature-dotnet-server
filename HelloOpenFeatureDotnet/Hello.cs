@@ -15,7 +15,7 @@ namespace HelloOpenFeatureDotnetServer
 
             if (string.IsNullOrEmpty(sdkKey))
             {
-                Console.WriteLine("Please edit Hello.cs to set SdkKey to your LaunchDarkly SDK key first");
+                Console.WriteLine("Please set an SDK key using the LAUNCHDARKLY_SDK_KEY environment variable.");
                 Environment.Exit(1);
             }
 
