@@ -19,11 +19,7 @@ namespace HelloOpenFeatureDotnetServer
                 Environment.Exit(1);
             }
 
-            var config = Configuration.Builder(sdkKey)
-                // Allow for asynchronous initialization, the SetProviderAsync call will return when initialization is
-                // complete.
-                .StartWaitTime(TimeSpan.Zero)
-                .Build();
+            var config = Configuration.Builder(sdkKey).Build();
 
             var provider = new Provider(config);
 
@@ -40,7 +36,7 @@ namespace HelloOpenFeatureDotnetServer
                 .Set("name", "Sandy")
                 .Build();
 
-            var flagValue = await client.GetBooleanValue(featureFlagKey, false, context);
+            var flagValue = await client.GetBooleanValueAsync(featureFlagKey, false, context);
 
             Console.WriteLine($"The {featureFlagKey} feature flag evaluates to {(flagValue ? "true" : "false")}");
 
@@ -49,7 +45,7 @@ namespace HelloOpenFeatureDotnetServer
             // the user properties and flag usage statistics will not appear on your dashboard. In a
             // normal long-running application, the SDK would continue running and events would be
             // delivered automatically in the background.
-            await OpenFeature.Api.Instance.Shutdown();
+            await OpenFeature.Api.Instance.ShutdownAsync();
         }
     }
 }
