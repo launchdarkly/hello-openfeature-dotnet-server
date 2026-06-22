@@ -13,10 +13,10 @@ This is a .NET Core application that can be built on any platform where .NET is 
     export LAUNCHDARKLY_FLAG_KEY="my-boolean-flag"
     ```
 
-2. If you are using Visual Studio, open `HelloDotNet.sln` and run the application. Or, to run from the command line, type the following command:
+2. If you are using Visual Studio, open `HelloOpenFeatureDotnet.sln` and run the application. Or, to run from the command line, type the following command:
 
 ```
-     dotnet run --project HelloOpenFeatureDotnet/HelloOpenFeatureDotnet.csproj --framework net6.0
+     dotnet run --project HelloOpenFeatureDotnet/HelloOpenFeatureDotnet.csproj --framework net8.0
 ```
 
 You should see the message `"The <flag key> feature flag evaluates to <true/false>"`.
