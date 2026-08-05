@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> **These examples have moved.** The OpenFeature .NET server provider examples now live in the [examples-dotnet repository](https://github.com/launchdarkly/examples-dotnet). This repository remains to support legacy references.
+
 # LaunchDarkly Sample OpenFeature .Net Server application
 
 We've built a simple console that demonstrates how LaunchDarkly's OpenFeature provider works.
